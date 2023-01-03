@@ -10,7 +10,6 @@ class CryptocurrencyModel {
   double priceUsd;
   double changePercent24Hr;
   double vwap24Hr;
-  String explorer;
 
   CryptocurrencyModel(
     this.id,
@@ -24,7 +23,6 @@ class CryptocurrencyModel {
     this.priceUsd,
     this.changePercent24Hr,
     this.vwap24Hr,
-    this.explorer,
   );
 
   factory CryptocurrencyModel.fromMapJson(Map<String, dynamic> jsonMapObject) =>
@@ -34,12 +32,15 @@ class CryptocurrencyModel {
         jsonMapObject['symbol'],
         jsonMapObject['name'],
         double.parse(jsonMapObject['supply']),
-        double.parse(jsonMapObject['maxsupply']),
+        jsonMapObject['maxsupply'] == null
+            ? 0
+            : double.parse(jsonMapObject['maxsupply']),
         double.parse(jsonMapObject['marketCapUsd']),
         double.parse(jsonMapObject['volumeUsd24Hr']),
         double.parse(jsonMapObject['priceUsd']),
-        double.parse(jsonMapObject['changePercent24Hr']),
-        double.parse(jsonMapObject['vwap24Hr']),
-        jsonMapObject['explorer'],
+        jsonMapObject['changePercent24Hr'] == null
+            ? 0
+            : double.parse(jsonMapObject['changePercent24Hr']),
+          jsonMapObject['vwap24Hr'] == null ? 0: double.parse(jsonMapObject['vwap24Hr']),
       );
 }
