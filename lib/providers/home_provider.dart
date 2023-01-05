@@ -4,12 +4,12 @@ import 'package:get_it/get_it.dart';
 
 import '../Model/cryptocurrency_model.dart';
 
-class SplashProvider extends ChangeNotifier{
+class HomeProvider extends ChangeNotifier {
   final NetworkApi apiAssets = GetIt.I.get<NetworkApi>();
 
   List<CryptocurrencyModel> cryptoList = [];
 
-  void loadDate() async{
+  void loadDate() async {
     cryptoList = await apiAssets.getAllCrypto();
     notifyListeners();
   }

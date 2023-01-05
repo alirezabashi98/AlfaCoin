@@ -1,12 +1,10 @@
 import 'dart:ui';
 
 import 'package:alfa_coin/di/initServiceLocator.dart';
-import 'package:alfa_coin/ui/screen/splash_screen.dart';
+import 'package:alfa_coin/ui/screen/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
-import 'Model/cryptocurrency_model.dart';
 
-void main(){
+void main() {
   initServiceLocator();
   runApp(const MyApp());
 }
@@ -27,9 +25,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       scrollBehavior: MyCustomScrollBehavior(),
       home: const Scaffold(
-        body:  SplashScreen(),
+        body: HomeScreen(),
       ),
     );
   }

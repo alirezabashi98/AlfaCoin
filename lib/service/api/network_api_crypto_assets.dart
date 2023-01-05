@@ -5,19 +5,19 @@ import 'package:dio/dio.dart';
 class NetworkApiCryptoAssets extends NetworkApi {
   @override
   Future<List<CryptocurrencyModel>> getAllCrypto() async {
-    try{
+    try {
       var response = await Dio().get('https://api.coincap.io/v2/assets');
 
       List<CryptocurrencyModel> cryptoList = response.data['data']
-          .map<CryptocurrencyModel>((jsonMapObject) => CryptocurrencyModel.fromMapJson(jsonMapObject))
+          .map<CryptocurrencyModel>(
+              (jsonMapObject) => CryptocurrencyModel.fromMapJson(jsonMapObject))
           .toList();
       return cryptoList;
-
-    }catch(ex){
+    } catch (ex) {
+      // ignore: avoid_print
       print(ex);
     }
 
     return [];
-
   }
 }
