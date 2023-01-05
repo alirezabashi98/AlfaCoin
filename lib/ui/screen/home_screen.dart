@@ -1,17 +1,12 @@
-// ignore_for_file: no_leading_underscores_for_local_identifiers
-
-import 'dart:ui';
-
 import 'package:alfa_coin/Model/cryptocurrency_model.dart';
 import 'package:alfa_coin/constants/constants.dart';
 import 'package:alfa_coin/providers/home_provider.dart';
-import 'package:alfa_coin/ui/widget/item_crypto.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -39,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Consumer<HomeProvider>(
             builder: (context, provider, child) {
               return provider.cryptoList.isEmpty
-                  ? getLoading()
+                  ? _shimmerLoading()
                   : getUi(provider);
             },
           ),
@@ -119,8 +114,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 const Spacer(),
                 SizedBox(
                   width: 40.0,
-                  child: Image.network(
-                    "https://coinicons-api.vercel.app/api/icon/${crypto.symbol.toLowerCase()}",
+                  child: CachedNetworkImage(
+                    imageUrl:
+                        "https://coinicons-api.vercel.app/api/icon/${crypto.symbol.toLowerCase()}",
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
                 ),
               ],
@@ -173,4 +171,42 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Color _getColorChangePercent(double percentChange) =>
       percentChange <= 0 ? ColorsApp.red : ColorsApp.green;
+
+  _shimmerLoading() {
+    return SizedBox(
+      width: double.infinity,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Expanded(
+            child: Shimmer.fromColors(
+              baseColor: Colors.grey.shade300,
+              highlightColor: Colors.grey.shade100,
+              enabled: true,
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return _getListCryptoItem(
+                    CryptocurrencyModel(
+                      "1",
+                      index,
+                      "symbol",
+                      "name",
+                      222.2,
+                      222.2,
+                      222.2,
+                      222.2,
+                      222.2,
+                      1,
+                      222.2,
+                    ),
+                  );
+                },
+                itemCount: 100,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
