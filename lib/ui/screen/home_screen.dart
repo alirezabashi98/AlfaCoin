@@ -209,4 +209,10 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _homeProvider.channel.sink.close();
+  }
 }
