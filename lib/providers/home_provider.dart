@@ -23,10 +23,7 @@ class HomeProvider extends ChangeNotifier {
 
   void reloadDate() {
     channel.stream.listen(
-      (message) async {
-        await Future.delayed(const Duration(seconds: 5), () {
-          print("reload");
-        });
+      (message) {
         List<CryptocurrencyModel> newCryptoList = [];
         for (var item in cryptoList) {
           var date = jsonDecode(message)[item.id] ?? item.priceUsd;
