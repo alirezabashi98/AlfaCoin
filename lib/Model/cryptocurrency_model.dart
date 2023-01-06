@@ -41,6 +41,8 @@ class CryptocurrencyModel {
         jsonMapObject['changePercent24Hr'] == null
             ? 0
             : double.parse(jsonMapObject['changePercent24Hr']),
-          jsonMapObject['vwap24Hr'] == null ? 0: double.parse(jsonMapObject['vwap24Hr']),
+        jsonMapObject['vwap24Hr'] == null
+            ? 0
+            : double.parse(jsonMapObject['vwap24Hr']),
       );
 }
