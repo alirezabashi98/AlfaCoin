@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:alfa_coin/di/initServiceLocator.dart';
+import 'package:alfa_coin/di/init_service_locator.dart';
 import 'package:alfa_coin/ui/screen/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +15,7 @@ class MyCustomScrollBehavior extends MaterialScrollBehavior {
   Set<PointerDeviceKind> get dragDevices => {
         PointerDeviceKind.touch,
         PointerDeviceKind.mouse,
+        PointerDeviceKind.trackpad,
         // etc.
       };
 }
