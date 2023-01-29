@@ -2,12 +2,13 @@ import 'package:alfa_coin/Model/cryptocurrency_model.dart';
 import 'package:alfa_coin/constants/constants.dart';
 import 'package:alfa_coin/providers/home_provider.dart';
 import 'package:alfa_coin/ui/widget/item_crypto.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
+
+import 'line.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -49,8 +50,25 @@ class _HomeScreenState extends State<HomeScreen> {
       itemCount: provider.cryptoList.length,
       itemBuilder: (context, index) {
         var list = provider.cryptoList;
-        return ItemCrypto(
-          crypto: list[index],
+        var item = list[index];
+        return GestureDetector(
+          onTap: () {
+            try {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LineChartSample2(
+                    crypto: item,
+                  ),
+                ),
+              );
+            } catch (ex) {
+              print('error');
+            }
+          },
+          child: ItemCrypto(
+            crypto: item,
+          ),
         );
       },
     );

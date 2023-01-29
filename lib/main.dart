@@ -1,11 +1,14 @@
 import 'dart:ui';
 
+import 'package:alfa_coin/constants/constants.dart';
 import 'package:alfa_coin/di/init_service_locator.dart';
+import 'package:alfa_coin/service/api/network_api_crypto_assets_history.dart';
 import 'package:alfa_coin/ui/screen/home_screen.dart';
+import 'package:alfa_coin/ui/screen/line.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  initServiceLocator();
+void main() async {
+  await initServiceLocator();
   runApp(const MyApp());
 }
 
@@ -29,6 +32,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       scrollBehavior: MyCustomScrollBehavior(),
       home: const Scaffold(
+        backgroundColor: ColorsApp.backgroundScreenDark,
         body: HomeScreen(),
       ),
     );

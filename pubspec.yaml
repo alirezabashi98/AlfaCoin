@@ -20,6 +20,9 @@ dependencies:
   cached_network_image: ^3.2.3
   shimmer: ^2.0.0
   web_socket_channel: ^2.2.0
+  fl_chart: ^0.55.2
+  google_fonts: ^3.0.1
+  crypto_font_icons: ^1.0.1
 
 dev_dependencies:
   flutter_test:

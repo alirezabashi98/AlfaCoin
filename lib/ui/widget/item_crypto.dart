@@ -26,7 +26,7 @@ class ItemCrypto extends StatelessWidget {
         ),
       ),
       leading: SizedBox(
-        width: 90.0,
+        width: 82.0,
         child: Center(
           child: Row(
             children: [
@@ -39,7 +39,7 @@ class ItemCrypto extends StatelessWidget {
                           : "0${crypto.rank}"
                       : crypto.rank.toString(),
                   style: const TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: ColorsApp.grey,
                   ),
@@ -47,7 +47,7 @@ class ItemCrypto extends StatelessWidget {
               ),
               const Spacer(),
               SizedBox(
-                width: 40.0,
+                width: 38.0,
                 child: CachedNetworkImage(
                   imageUrl:
                       "https://coinicons-api.vercel.app/api/icon/${crypto.symbol.toLowerCase()}",
