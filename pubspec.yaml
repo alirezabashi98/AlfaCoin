@@ -23,6 +23,8 @@ dependencies:
   fl_chart: ^0.55.2
   google_fonts: ^3.0.1
   crypto_font_icons: ^1.0.1
+  webviewx: ^0.2.1
+  desktop_webview_window: ^0.1.6
 
 dev_dependencies:
   flutter_test:
