@@ -1,23 +1,23 @@
 import 'package:alfa_coin/Model/cryptocurrency_model.dart';
 import 'package:alfa_coin/constants/constants.dart';
 import 'package:alfa_coin/providers/home_provider.dart';
-import 'package:alfa_coin/ui/widget/item_crypto.dart';
+import 'package:alfa_coin/ui/widget/mobile/item_crypto_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
-import 'detail_screen.dart';
+import 'detail_tablet_screen.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomeTabletScreen extends StatefulWidget {
+  const HomeTabletScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomeTabletScreen> createState() => _HomeTabletScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeTabletScreenState extends State<HomeTabletScreen> {
   final HomeProvider _homeProvider = GetIt.I.get<HomeProvider>();
 
   @override
@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
               print('error');
             }
           },
-          child: ItemCrypto(
+          child: ItemCryptoMobile(
             crypto: item,
           ),
         );
@@ -108,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
               enabled: true,
               child: ListView.builder(
                 itemBuilder: (context, index) {
-                  return ItemCrypto(
+                  return ItemCryptoMobile(
                     crypto: CryptocurrencyModel(
                       "1",
                       index + 1,

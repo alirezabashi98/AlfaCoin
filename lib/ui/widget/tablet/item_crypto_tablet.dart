@@ -2,10 +2,10 @@ import 'package:alfa_coin/constants/constants.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../../Model/cryptocurrency_model.dart';
+import '../../../Model/cryptocurrency_model.dart';
 
-class ItemCrypto extends StatelessWidget {
-  const ItemCrypto({Key? key, required this.crypto}) : super(key: key);
+class ItemCryptoTablet extends StatelessWidget {
+  const ItemCryptoTablet({Key? key, required this.crypto}) : super(key: key);
   final CryptocurrencyModel crypto;
 
   @override

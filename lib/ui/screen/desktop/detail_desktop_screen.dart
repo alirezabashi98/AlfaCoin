@@ -6,7 +6,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-import '../../Model/cryptocurrency_model.dart';
+import '../../../Model/cryptocurrency_model.dart';
 
 class LineChartSample2 extends StatefulWidget {
   final CryptocurrencyModel crypto;
