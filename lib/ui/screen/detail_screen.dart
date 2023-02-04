@@ -45,7 +45,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
               width: 30.0,
               child: CachedNetworkImage(
                 imageUrl:
-                "https://coinicons-api.vercel.app/api/icon/${widget.crypto.symbol.toLowerCase()}",
+                "https://assets.coincap.io/assets/icons/${(widget.crypto.symbol.toLowerCase() == 'ustc') ? 'ust' : widget.crypto.symbol.toLowerCase()}@2x.png",
                 errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
             ),

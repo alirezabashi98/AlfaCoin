@@ -50,7 +50,7 @@ class ItemCrypto extends StatelessWidget {
                 width: 38.0,
                 child: CachedNetworkImage(
                   imageUrl:
-                      "https://coinicons-api.vercel.app/api/icon/${crypto.symbol.toLowerCase()}",
+                      "https://assets.coincap.io/assets/icons/${(crypto.symbol.toLowerCase() == 'ustc') ? 'ust' : crypto.symbol.toLowerCase()}@2x.png",
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
               ),
