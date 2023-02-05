@@ -30,12 +30,12 @@ class ItemCryptoMobile extends StatelessWidget {
         ),
       ),
       leading: SizedBox(
-        width: 20.0.w,
+        width: 17.0.w,
         child: Center(
           child: Row(
             children: [
               SizedBox(
-                width: 10.w,
+                width: 8.w,
                 child: AutoSizeText(
                   crypto.rank < 100
                       ? crypto.rank < 10
@@ -52,7 +52,7 @@ class ItemCryptoMobile extends StatelessWidget {
               ),
               const Spacer(),
               SizedBox(
-                width: 10.w,
+                width: 8.w,
                 child: CachedNetworkImage(
                   imageUrl:
                       "https://assets.coincap.io/assets/icons/${(crypto.symbol.toLowerCase() == 'ustc') ? 'ust' : crypto.symbol.toLowerCase()}@2x.png",
@@ -64,7 +64,7 @@ class ItemCryptoMobile extends StatelessWidget {
         ),
       ),
       trailing: SizedBox(
-        width: 150,
+        width: 40.w,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [

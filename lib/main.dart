@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
             breakpoints: ScreenBreakpoints(
               tablet: 550,
               desktop: 688,
-              watch: 320,
+              watch: 250
             ),
             mobile: OrientationLayoutBuilder(
                 portrait: (context) => const HomeMobileScreen(),

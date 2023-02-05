@@ -1,5 +1,6 @@
 import 'package:alfa_coin/constants/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class ItemTitleCryptoMobile extends StatelessWidget {
   const ItemTitleCryptoMobile({Key? key}) : super(key: key);
@@ -10,12 +11,12 @@ class ItemTitleCryptoMobile extends StatelessWidget {
 
     return ListTile(
       leading: SizedBox(
-        width: 82.0,
+        width: 30.w,
         child: Center(
           child: Row(
             children: [
               SizedBox(
-                width: 40.0,
+                width: 17.w,
                 child: Text(
                   'Rank',
                   style: style,
@@ -23,7 +24,7 @@ class ItemTitleCryptoMobile extends StatelessWidget {
               ),
               const Spacer(),
               SizedBox(
-                width: 38.0,
+                width: 12.w,
                 child: Text(
                   'Name',
                   style: style,

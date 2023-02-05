@@ -1,5 +1,8 @@
 String abbreviateNumber(double number) {
-  if (number >= 1000000000) {
+  if (number >= 1000000000000) {
+    String abbreviation = "${(number / 1000000000000).toStringAsFixed(2)}t";
+    return abbreviation;
+  } else if (number >= 1000000000) {
     String abbreviation = "${(number / 1000000000).toStringAsFixed(2)}b";
     return abbreviation;
   } else if (number >= 1000000) {

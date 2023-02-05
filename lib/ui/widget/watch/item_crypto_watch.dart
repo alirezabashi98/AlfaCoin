@@ -1,6 +1,8 @@
 import 'package:alfa_coin/constants/constants.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../Model/cryptocurrency_model.dart';
 
@@ -11,55 +13,24 @@ class ItemCryptoWatch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(
+      title: AutoSizeText(
+        maxLines: 1,
         crypto.name,
         style: const TextStyle(
           fontWeight: FontWeight.bold,
           color: ColorsApp.green,
         ),
       ),
-      subtitle: Text(
+      subtitle: AutoSizeText(
         crypto.symbol,
+        maxLines: 1,
         style: const TextStyle(
           color: ColorsApp.grey,
           fontSize: 12,
         ),
       ),
-      leading: SizedBox(
-        width: 82.0,
-        child: Center(
-          child: Row(
-            children: [
-              SizedBox(
-                width: 40.0,
-                child: Text(
-                  crypto.rank < 100
-                      ? crypto.rank < 10
-                          ? "00${crypto.rank}"
-                          : "0${crypto.rank}"
-                      : crypto.rank.toString(),
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: ColorsApp.grey,
-                  ),
-                ),
-              ),
-              const Spacer(),
-              SizedBox(
-                width: 38.0,
-                child: CachedNetworkImage(
-                  imageUrl:
-                      "https://assets.coincap.io/assets/icons/${(crypto.symbol.toLowerCase() == 'ustc') ? 'ust' : crypto.symbol.toLowerCase()}@2x.png",
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
       trailing: SizedBox(
-        width: 150,
+        width: 40.w,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -67,23 +38,19 @@ class ItemCryptoWatch extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text(
+                AutoSizeText(
+                  maxLines: 1,
                   crypto.priceUsd.toStringAsFixed(2),
-                  style: const TextStyle(color: ColorsApp.grey, fontSize: 17),
+                  style: const TextStyle(color: ColorsApp.grey, fontSize: 15),
                 ),
-                Text(
+                AutoSizeText(
+                  maxLines: 1,
                   "${crypto.changePercent24Hr.toStringAsFixed(2)}%",
                   style: TextStyle(
                     color: _getColorChangePercent(crypto.changePercent24Hr),
                   ),
                 ),
               ],
-            ),
-            SizedBox(
-              width: 50,
-              child: Center(
-                child: _getIconChangePercent(crypto.changePercent24Hr),
-              ),
             ),
           ],
         ),
@@ -94,7 +61,6 @@ class ItemCryptoWatch extends StatelessWidget {
   _getIconChangePercent(double percentChange) => percentChange <= 0
       ? const Icon(
           Icons.trending_down,
-          size: 24,
           color: ColorsApp.red,
         )
       : const Icon(

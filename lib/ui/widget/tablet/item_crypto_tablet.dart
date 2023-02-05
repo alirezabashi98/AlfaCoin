@@ -1,8 +1,10 @@
 import 'package:alfa_coin/constants/constants.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../Model/cryptocurrency_model.dart';
+import '../../../utility/abbreviate_number.dart';
 
 class ItemCryptoTablet extends StatelessWidget {
   const ItemCryptoTablet({Key? key, required this.crypto}) : super(key: key);
@@ -59,10 +61,31 @@ class ItemCryptoTablet extends StatelessWidget {
         ),
       ),
       trailing: SizedBox(
-        width: 150,
+        width: 300,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
+            const Spacer(),
+            SizedBox(
+              width: 70,
+              child: AutoSizeText(
+                "\$${abbreviateNumber(crypto.marketCapUsd)}",
+                style: const TextStyle(color: ColorsApp.grey, fontSize: 14),
+                maxLines: 1,
+                textAlign: TextAlign.start,
+              ),
+            ),
+            const Spacer(),
+            SizedBox(
+              width: 80,
+              child: AutoSizeText(
+                abbreviateNumber(crypto.supply),
+                maxLines: 1,
+                style: const TextStyle(color: ColorsApp.grey, fontSize: 14),
+                textAlign: TextAlign.start,
+              ),
+            ),
+            const Spacer(),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.end,

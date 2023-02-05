@@ -2,6 +2,7 @@ import 'package:alfa_coin/Model/cryptocurrency_model.dart';
 import 'package:alfa_coin/constants/constants.dart';
 import 'package:alfa_coin/providers/home_provider.dart';
 import 'package:alfa_coin/ui/widget/mobile/item_crypto_mobile.dart';
+import 'package:alfa_coin/ui/widget/watch/item_crypto_watch.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get_it/get_it.dart';
@@ -66,7 +67,7 @@ class _HomeWatchScreenState extends State<HomeWatchScreen> {
               print('error');
             }
           },
-          child: ItemCryptoMobile(
+          child: ItemCryptoWatch(
             crypto: item,
           ),
         );

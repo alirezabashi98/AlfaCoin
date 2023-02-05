@@ -117,7 +117,7 @@ class ItemCryptoDesktop extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   AutoSizeText(
-                    "\$${abbreviateNumber(crypto.priceUsd)}",
+                    "\$${crypto.priceUsd.toStringAsFixed(2)}",
                     maxLines: 1,
                     style: const TextStyle(color: ColorsApp.grey, fontSize: 17),
                   ),
