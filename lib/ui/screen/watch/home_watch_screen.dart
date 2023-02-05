@@ -3,6 +3,7 @@ import 'package:alfa_coin/constants/constants.dart';
 import 'package:alfa_coin/providers/home_provider.dart';
 import 'package:alfa_coin/ui/widget/mobile/item_crypto_mobile.dart';
 import 'package:alfa_coin/ui/widget/watch/item_crypto_watch.dart';
+import 'package:alfa_coin/ui/widget/watch/item_title_crypto_watch.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get_it/get_it.dart';
@@ -47,31 +48,38 @@ class _HomeWatchScreenState extends State<HomeWatchScreen> {
   }
 
   getUi(HomeProvider provider) {
-    return ListView.builder(
-      itemCount: provider.cryptoList.length,
-      itemBuilder: (context, index) {
-        var list = provider.cryptoList;
-        var item = list[index];
-        return GestureDetector(
-          onTap: () {
-            try {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => LineChartSample2(
-                    crypto: item,
-                  ),
+    return Column(
+      children: [
+        const ItemTitleCryptoWatch(),
+        Expanded(
+          child: ListView.builder(
+            itemCount: provider.cryptoList.length,
+            itemBuilder: (context, index) {
+              var list = provider.cryptoList;
+              var item = list[index];
+              return GestureDetector(
+                onTap: () {
+                  try {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LineChartSample2(
+                          crypto: item,
+                        ),
+                      ),
+                    );
+                  } catch (ex) {
+                    print('error');
+                  }
+                },
+                child: ItemCryptoWatch(
+                  crypto: item,
                 ),
               );
-            } catch (ex) {
-              print('error');
-            }
-          },
-          child: ItemCryptoWatch(
-            crypto: item,
+            },
           ),
-        );
-      },
+        ),
+      ],
     );
   }
 
@@ -102,14 +110,15 @@ class _HomeWatchScreenState extends State<HomeWatchScreen> {
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
+          const ItemTitleCryptoWatch(),
           Expanded(
             child: Shimmer.fromColors(
-              baseColor: Colors.grey.shade300,
-              highlightColor: Colors.grey.shade100,
+              baseColor: ColorsApp.red,
+              highlightColor: ColorsApp.green,
               enabled: true,
               child: ListView.builder(
                 itemBuilder: (context, index) {
-                  return ItemCryptoMobile(
+                  return ItemCryptoWatch(
                     crypto: CryptocurrencyModel(
                       "1",
                       index + 1,

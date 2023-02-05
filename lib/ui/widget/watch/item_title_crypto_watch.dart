@@ -1,44 +1,27 @@
 import 'package:alfa_coin/constants/constants.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class ItemTitleCryptoWatch extends StatelessWidget {
   const ItemTitleCryptoWatch({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var style = const TextStyle(color: ColorsApp.grey, fontSize: 14);
+    var style = const TextStyle(color: ColorsApp.grey, fontSize: 11);
+    var minFontSize = 5.0;
+    var maxFontSize = 13.0;
 
     return ListTile(
-      title: Text(
+      title: AutoSizeText(
+        maxLines: 1,
+        minFontSize: minFontSize,
+        maxFontSize: maxFontSize,
         'Name',
         style: style,
       ),
-      leading: SizedBox(
-        width: 82.0,
-        child: Center(
-          child: Row(
-            children: [
-              SizedBox(
-                width: 40.0,
-                child: Text(
-                  'Rank',
-                  style: style,
-                ),
-              ),
-              const Spacer(),
-              SizedBox(
-                width: 38.0,
-                child: Text(
-                  '',
-                  style: style,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
       trailing: SizedBox(
-        width: 200,
+        width: 40.w,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -46,25 +29,21 @@ class ItemTitleCryptoWatch extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text(
+                AutoSizeText(
+                  maxLines: 1,
                   "Price",
+                  minFontSize: minFontSize,
+                  maxFontSize: maxFontSize,
                   style: style,
                 ),
-                Text(
+                AutoSizeText(
+                  maxLines: 1,
+                  minFontSize: minFontSize,
+                  maxFontSize: maxFontSize,
                   "Change (24Hr)",
                   style: style,
                 ),
               ],
-            ),
-            const SizedBox(
-              width: 60,
-              child: Center(
-                child: Icon(
-                  Icons.trending_down,
-                  size: 24,
-                  color: ColorsApp.grey,
-                ),
-              ),
             ),
           ],
         ),
