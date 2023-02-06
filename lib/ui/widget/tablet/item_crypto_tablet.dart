@@ -2,6 +2,7 @@ import 'package:alfa_coin/constants/constants.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../Model/cryptocurrency_model.dart';
 import '../../../utility/abbreviate_number.dart';
@@ -12,15 +13,30 @@ class ItemCryptoTablet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var style = const TextStyle(color: ColorsApp.grey, fontSize: 14);
+    var stylePrice = const TextStyle(color: ColorsApp.grey, fontSize: 17);
+    var minFontSize = 7.0;
+    var maxFontSize = 15.0;
+    var maxFontSizeSubtitle = 13.0;
+    var minFontSizePrice = 10.0;
+    var maxFontSizePrice = 18.0;
+    var maxFontSizeRank = 16.0;
+
     return ListTile(
-      title: Text(
+      title: AutoSizeText(
+        maxLines: 1,
+        minFontSize: minFontSize,
+        maxFontSize: maxFontSize,
         crypto.name,
         style: const TextStyle(
           fontWeight: FontWeight.bold,
           color: ColorsApp.green,
         ),
       ),
-      subtitle: Text(
+      subtitle: AutoSizeText(
+        maxLines: 1,
+        minFontSize: minFontSize,
+        maxFontSize: maxFontSizeSubtitle,
         crypto.symbol,
         style: const TextStyle(
           color: ColorsApp.grey,
@@ -28,13 +44,16 @@ class ItemCryptoTablet extends StatelessWidget {
         ),
       ),
       leading: SizedBox(
-        width: 82.0,
+        width: 15.w,
         child: Center(
           child: Row(
             children: [
               SizedBox(
-                width: 40.0,
-                child: Text(
+                width: 7.w,
+                child: AutoSizeText(
+                  maxLines: 1,
+                  minFontSize: minFontSize,
+                  maxFontSize: maxFontSizeRank,
                   crypto.rank < 100
                       ? crypto.rank < 10
                           ? "00${crypto.rank}"
@@ -49,7 +68,7 @@ class ItemCryptoTablet extends StatelessWidget {
               ),
               const Spacer(),
               SizedBox(
-                width: 38.0,
+                width: 7.w,
                 child: CachedNetworkImage(
                   imageUrl:
                       "https://assets.coincap.io/assets/icons/${(crypto.symbol.toLowerCase() == 'ustc') ? 'ust' : crypto.symbol.toLowerCase()}@2x.png",
@@ -61,7 +80,7 @@ class ItemCryptoTablet extends StatelessWidget {
         ),
       ),
       trailing: SizedBox(
-        width: 300,
+        width: 60.w,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -69,9 +88,11 @@ class ItemCryptoTablet extends StatelessWidget {
             SizedBox(
               width: 70,
               child: AutoSizeText(
-                "\$${abbreviateNumber(crypto.marketCapUsd)}",
-                style: const TextStyle(color: ColorsApp.grey, fontSize: 14),
                 maxLines: 1,
+                minFontSize: minFontSize,
+                maxFontSize: maxFontSize,
+                "\$${abbreviateNumber(crypto.marketCapUsd)}",
+                style: style,
                 textAlign: TextAlign.start,
               ),
             ),
@@ -79,31 +100,43 @@ class ItemCryptoTablet extends StatelessWidget {
             SizedBox(
               width: 80,
               child: AutoSizeText(
-                abbreviateNumber(crypto.supply),
                 maxLines: 1,
-                style: const TextStyle(color: ColorsApp.grey, fontSize: 14),
+                minFontSize: minFontSize,
+                maxFontSize: maxFontSize,
+                abbreviateNumber(crypto.supply),
+                style: style,
                 textAlign: TextAlign.start,
               ),
             ),
             const Spacer(),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  crypto.priceUsd.toStringAsFixed(2),
-                  style: const TextStyle(color: ColorsApp.grey, fontSize: 17),
-                ),
-                Text(
-                  "${crypto.changePercent24Hr.toStringAsFixed(2)}%",
-                  style: TextStyle(
-                    color: _getColorChangePercent(crypto.changePercent24Hr),
-                  ),
-                ),
-              ],
-            ),
             SizedBox(
-              width: 50,
+              width: 14.w,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  AutoSizeText(
+                    maxLines: 1,
+                    minFontSize: minFontSizePrice,
+                    maxFontSize: maxFontSizePrice,
+                    "\$${crypto.priceUsd.toStringAsFixed(2)}",
+                    style: stylePrice,
+                  ),
+                  AutoSizeText(
+                    "${crypto.changePercent24Hr.toStringAsFixed(2)}%",
+                    maxLines: 1,
+                    minFontSize: minFontSize,
+                    maxFontSize: maxFontSize,
+                    style: TextStyle(
+                      color: _getColorChangePercent(crypto.changePercent24Hr),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(width: 1.w),
+            SizedBox(
+              width: 8.w,
               child: Center(
                 child: _getIconChangePercent(crypto.changePercent24Hr),
               ),

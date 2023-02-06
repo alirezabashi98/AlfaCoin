@@ -9,6 +9,7 @@ import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../../widget/tablet/item_title_crypto_tablet.dart';
 import 'detail_tablet_screen.dart';
 
 class HomeTabletScreen extends StatefulWidget {
@@ -47,31 +48,38 @@ class _HomeTabletScreenState extends State<HomeTabletScreen> {
   }
 
   getUi(HomeProvider provider) {
-    return ListView.builder(
-      itemCount: provider.cryptoList.length,
-      itemBuilder: (context, index) {
-        var list = provider.cryptoList;
-        var item = list[index];
-        return GestureDetector(
-          onTap: () {
-            try {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => LineChartSample2(
-                    crypto: item,
-                  ),
+    return Column(
+      children: [
+        const ItemTitleCryptoTablet(),
+        Expanded(
+          child: ListView.builder(
+            itemCount: provider.cryptoList.length,
+            itemBuilder: (context, index) {
+              var list = provider.cryptoList;
+              var item = list[index];
+              return GestureDetector(
+                onTap: () {
+                  try {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LineChartSample2(
+                          crypto: item,
+                        ),
+                      ),
+                    );
+                  } catch (ex) {
+                    print('error');
+                  }
+                },
+                child: ItemCryptoTablet(
+                  crypto: item,
                 ),
               );
-            } catch (ex) {
-              print('error');
-            }
-          },
-          child: ItemCryptoTablet(
-            crypto: item,
+            },
           ),
-        );
-      },
+        ),
+      ],
     );
   }
 
@@ -80,6 +88,7 @@ class _HomeTabletScreenState extends State<HomeTabletScreen> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: const [
+          ItemTitleCryptoTablet(),
           SpinKitSpinningLines(
             color: Colors.white,
             size: 60.0,
@@ -102,14 +111,15 @@ class _HomeTabletScreenState extends State<HomeTabletScreen> {
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
+          const ItemTitleCryptoTablet(),
           Expanded(
             child: Shimmer.fromColors(
-              baseColor: Colors.grey.shade300,
-              highlightColor: Colors.grey.shade100,
+              baseColor: ColorsApp.red,
+              highlightColor: ColorsApp.green,
               enabled: true,
               child: ListView.builder(
                 itemBuilder: (context, index) {
-                  return ItemCryptoMobile(
+                  return ItemCryptoTablet(
                     crypto: CryptocurrencyModel(
                       "1",
                       index + 1,
