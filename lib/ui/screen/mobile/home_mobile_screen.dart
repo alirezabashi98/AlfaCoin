@@ -109,10 +109,11 @@ class _HomeMobileScreenState extends State<HomeMobileScreen> {
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
+          const ItemTitleCryptoMobile(),
           Expanded(
             child: Shimmer.fromColors(
-              baseColor: Colors.grey.shade300,
-              highlightColor: Colors.grey.shade100,
+              baseColor: ColorsApp.red,
+              highlightColor: ColorsApp.green,
               enabled: true,
               child: ListView.builder(
                 itemBuilder: (context, index) {

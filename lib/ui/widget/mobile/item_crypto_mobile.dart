@@ -12,9 +12,18 @@ class ItemCryptoMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var minFontSize = 7.0;
+    var minFontSizePrice = 11.0;
+    var maxFontSize = 14.0;
+    var maxFontSizePrise = 17.0;
+    var maxFontSizeChangePercent24Hr = 14.0;
+    var maxFontSizeRank = 16.0;
+
     return ListTile(
       title: AutoSizeText(
         crypto.name,
+        minFontSize: minFontSize,
+        maxFontSize: maxFontSize,
         style: const TextStyle(
           fontWeight: FontWeight.bold,
           color: ColorsApp.green,
@@ -23,6 +32,8 @@ class ItemCryptoMobile extends StatelessWidget {
       ),
       subtitle: AutoSizeText(
         crypto.symbol,
+        minFontSize: minFontSize,
+        maxFontSize: maxFontSize,
         maxLines: 1,
         style: const TextStyle(
           color: ColorsApp.grey,
@@ -37,6 +48,8 @@ class ItemCryptoMobile extends StatelessWidget {
               SizedBox(
                 width: 8.w,
                 child: AutoSizeText(
+                  minFontSize: minFontSize,
+                  maxFontSize: maxFontSizeRank,
                   crypto.rank < 100
                       ? crypto.rank < 10
                           ? "00${crypto.rank}"
@@ -64,7 +77,7 @@ class ItemCryptoMobile extends StatelessWidget {
         ),
       ),
       trailing: SizedBox(
-        width: 40.w,
+        width: 35.w,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -74,10 +87,14 @@ class ItemCryptoMobile extends StatelessWidget {
               children: [
                 AutoSizeText(
                   crypto.priceUsd.toStringAsFixed(2),
+                  minFontSize: minFontSizePrice,
+                  maxFontSize: maxFontSizePrise,
                   maxLines: 1,
-                  style: const TextStyle(color: ColorsApp.grey, fontSize: 17),
+                  style: const TextStyle(color: ColorsApp.grey,fontSize: 17 ),
                 ),
                 AutoSizeText(
+                  minFontSize: minFontSize,
+                  maxFontSize: maxFontSizeChangePercent24Hr,
                   "${crypto.changePercent24Hr.toStringAsFixed(2)}%",
                   maxLines: 1,
                   style: TextStyle(
@@ -86,8 +103,9 @@ class ItemCryptoMobile extends StatelessWidget {
                 ),
               ],
             ),
+            SizedBox(width: 2.w),
             SizedBox(
-              width: 50,
+              width: 5.w,
               child: Center(
                 child: _getIconChangePercent(crypto.changePercent24Hr),
               ),
@@ -101,12 +119,10 @@ class ItemCryptoMobile extends StatelessWidget {
   _getIconChangePercent(double percentChange) => percentChange <= 0
       ? const Icon(
           Icons.trending_down,
-          size: 24,
           color: ColorsApp.red,
         )
       : const Icon(
           Icons.trending_up,
-          size: 24,
           color: ColorsApp.green,
         );
 

@@ -1,4 +1,5 @@
 import 'package:alfa_coin/constants/constants.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -8,25 +9,38 @@ class ItemTitleCryptoMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var style = const TextStyle(color: ColorsApp.grey, fontSize: 11);
+    var minFontSize = 7.0;
+    var maxFontSize = 14.0;
+    var maxFontSizeRank = 16.0;
 
     return ListTile(
+      title: AutoSizeText(
+        'Name',
+        maxLines: 1,
+        minFontSize: minFontSize,
+        maxFontSize: maxFontSize,
+        style: style,
+      ),
       leading: SizedBox(
-        width: 30.w,
+        width: 17.w,
         child: Center(
           child: Row(
             children: [
               SizedBox(
-                width: 17.w,
-                child: Text(
+                width: 8.w,
+                child: AutoSizeText(
                   'Rank',
+                  minFontSize: minFontSize,
+                  maxFontSize: maxFontSizeRank,
+                  maxLines: 1,
                   style: style,
                 ),
               ),
               const Spacer(),
               SizedBox(
-                width: 12.w,
+                width: 7.w,
                 child: Text(
-                  'Name',
+                  ' ',
                   style: style,
                 ),
               ),
@@ -35,7 +49,7 @@ class ItemTitleCryptoMobile extends StatelessWidget {
         ),
       ),
       trailing: SizedBox(
-        width: 200,
+        width: 40.w,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -53,12 +67,12 @@ class ItemTitleCryptoMobile extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(
-              width: 60,
-              child: Center(
+            SizedBox(width: 2.w),
+            SizedBox(
+              width: 5.w,
+              child: const Center(
                 child: Icon(
                   Icons.trending_down,
-                  size: 24,
                   color: ColorsApp.grey,
                 ),
               ),
