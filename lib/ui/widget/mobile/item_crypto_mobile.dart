@@ -41,7 +41,7 @@ class ItemCryptoMobile extends StatelessWidget {
         ),
       ),
       leading: SizedBox(
-        width: 17.0.w,
+        width: 20.0.w,
         child: Center(
           child: Row(
             children: [
@@ -65,7 +65,7 @@ class ItemCryptoMobile extends StatelessWidget {
               ),
               const Spacer(),
               SizedBox(
-                width: 8.w,
+                width: 10.w,
                 child: CachedNetworkImage(
                   imageUrl:
                       "https://assets.coincap.io/assets/icons/${(crypto.symbol.toLowerCase() == 'ustc') ? 'ust' : crypto.symbol.toLowerCase()}@2x.png",
@@ -81,27 +81,30 @@ class ItemCryptoMobile extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                AutoSizeText(
-                  crypto.priceUsd.toStringAsFixed(2),
-                  minFontSize: minFontSizePrice,
-                  maxFontSize: maxFontSizePrise,
-                  maxLines: 1,
-                  style: const TextStyle(color: ColorsApp.grey,fontSize: 17 ),
-                ),
-                AutoSizeText(
-                  minFontSize: minFontSize,
-                  maxFontSize: maxFontSizeChangePercent24Hr,
-                  "${crypto.changePercent24Hr.toStringAsFixed(2)}%",
-                  maxLines: 1,
-                  style: TextStyle(
-                    color: _getColorChangePercent(crypto.changePercent24Hr),
+            SizedBox(
+              width: 28.w,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  AutoSizeText(
+                    crypto.priceUsd.toStringAsFixed(2),
+                    minFontSize: minFontSizePrice,
+                    maxFontSize: maxFontSizePrise,
+                    maxLines: 1,
+                    style: const TextStyle(color: ColorsApp.grey,fontSize: 17 ),
                   ),
-                ),
-              ],
+                  AutoSizeText(
+                    minFontSize: minFontSize,
+                    maxFontSize: maxFontSizeChangePercent24Hr,
+                    "${crypto.changePercent24Hr.toStringAsFixed(2)}%",
+                    maxLines: 1,
+                    style: TextStyle(
+                      color: _getColorChangePercent(crypto.changePercent24Hr),
+                    ),
+                  ),
+                ],
+              ),
             ),
             SizedBox(width: 2.w),
             SizedBox(

@@ -47,7 +47,9 @@ class MyApp extends StatelessWidget {
             mobile: OrientationLayoutBuilder(
                 portrait: (context) => const HomeMobileScreen(),
                 landscape: (context) => const HomeTabletScreen()),
-            tablet: const HomeTabletScreen(),
+            tablet:OrientationLayoutBuilder(
+                portrait: (context) => const HomeTabletScreen(),
+                landscape: (context) => const HomeDesktopScreen()),
             desktop: const HomeDesktopScreen(),
             watch: const HomeWatchScreen(),
           ),

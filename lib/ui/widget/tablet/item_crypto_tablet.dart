@@ -44,12 +44,12 @@ class ItemCryptoTablet extends StatelessWidget {
         ),
       ),
       leading: SizedBox(
-        width: 15.w,
+        width: 20.w,
         child: Center(
           child: Row(
             children: [
               SizedBox(
-                width: 7.w,
+                width: 8.w,
                 child: AutoSizeText(
                   maxLines: 1,
                   minFontSize: minFontSize,
@@ -68,7 +68,7 @@ class ItemCryptoTablet extends StatelessWidget {
               ),
               const Spacer(),
               SizedBox(
-                width: 7.w,
+                width: 10.w,
                 child: CachedNetworkImage(
                   imageUrl:
                       "https://assets.coincap.io/assets/icons/${(crypto.symbol.toLowerCase() == 'ustc') ? 'ust' : crypto.symbol.toLowerCase()}@2x.png",
@@ -80,7 +80,7 @@ class ItemCryptoTablet extends StatelessWidget {
         ),
       ),
       trailing: SizedBox(
-        width: 60.w,
+        width: 85.w,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -98,7 +98,7 @@ class ItemCryptoTablet extends StatelessWidget {
             ),
             const Spacer(),
             SizedBox(
-              width: 80,
+              width: 70,
               child: AutoSizeText(
                 maxLines: 1,
                 minFontSize: minFontSize,
@@ -110,7 +110,7 @@ class ItemCryptoTablet extends StatelessWidget {
             ),
             const Spacer(),
             SizedBox(
-              width: 14.w,
+              width: 22.w,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -150,12 +150,10 @@ class ItemCryptoTablet extends StatelessWidget {
   _getIconChangePercent(double percentChange) => percentChange <= 0
       ? const Icon(
           Icons.trending_down,
-          size: 24,
           color: ColorsApp.red,
         )
       : const Icon(
           Icons.trending_up,
-          size: 24,
           color: ColorsApp.green,
         );
 

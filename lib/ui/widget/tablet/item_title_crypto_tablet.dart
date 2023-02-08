@@ -21,20 +21,21 @@ class ItemTitleCryptoTablet extends StatelessWidget {
         style: style,
       ),
       leading: SizedBox(
-        width: 15.w,
+        width: 20.w,
         child: Center(
           child: Row(
             children: [
               SizedBox(
-                width: 8.w,
-                child: Text(
+                width: 10.w,
+                child: AutoSizeText(
                   'Rank',
+                  maxLines: 1,
                   style: style,
                 ),
               ),
               const Spacer(),
               SizedBox(
-                width: 6.w,
+                width: 8.w,
                 child: Text(
                   '',
                   style: style,
@@ -45,7 +46,7 @@ class ItemTitleCryptoTablet extends StatelessWidget {
         ),
       ),
       trailing: SizedBox(
-        width: 60.w,
+        width: 85.w,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -63,7 +64,7 @@ class ItemTitleCryptoTablet extends StatelessWidget {
             ),
             const Spacer(),
             SizedBox(
-              width: 80,
+              width: 70,
               child:
               AutoSizeText(
                 maxLines: 1,
@@ -76,7 +77,7 @@ class ItemTitleCryptoTablet extends StatelessWidget {
             ),
             const Spacer(),
             SizedBox(
-              width: 14.w,
+              width: 22.w,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.end,
