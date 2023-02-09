@@ -117,7 +117,7 @@ class _HomeDesktopScreenState extends State<HomeDesktopScreen> {
               enabled: true,
               child: ListView.builder(
                 itemBuilder: (context, index) {
-                  return ItemCryptoMobile(
+                  return ItemCryptoDesktop(
                     crypto: CryptocurrencyModel(
                       "1",
                       index + 1,

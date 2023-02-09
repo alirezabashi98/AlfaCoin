@@ -75,11 +75,11 @@ class ItemCryptoTablet extends StatelessWidget {
         ),
       ),
       trailing: SizedBox(
-        width: 60.w,
+        width: 354,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            const Spacer(),
+            SizedBox(width: 2.w),
             SizedBox(
               width: 65,
               child: AutoSizeText(
@@ -91,7 +91,7 @@ class ItemCryptoTablet extends StatelessWidget {
                 textAlign: TextAlign.start,
               ),
             ),
-            const Spacer(),
+            SizedBox(width: 4.w),
             SizedBox(
               width: 65,
               child: AutoSizeText(

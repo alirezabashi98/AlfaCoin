@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
                 const ScreenBreakpoints(tablet: 550, desktop: 688, watch: 250),
             mobile: OrientationLayoutBuilder(
               portrait: (context) => const HomeMobileScreen(),
-              landscape: (context) => const HomeDesktopScreen(),
+              landscape: (context) => const HomeTabletScreen(),
             ),
             tablet: OrientationLayoutBuilder(
               portrait: (context) => const HomeTabletScreen(),
