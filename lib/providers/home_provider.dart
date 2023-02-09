@@ -18,7 +18,6 @@ class HomeProvider extends ChangeNotifier {
 
   void loadDate() async {
     cryptoList = await apiAssets.getAllCrypto();
-    print(cryptoList);
     notifyListeners();
     reloadDate();
   }

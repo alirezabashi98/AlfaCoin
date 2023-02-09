@@ -9,6 +9,7 @@ import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../../../di/init_service_locator.dart';
 import '../../widget/tablet/item_title_crypto_tablet.dart';
 import 'detail_tablet_screen.dart';
 
@@ -20,7 +21,7 @@ class HomeTabletScreen extends StatefulWidget {
 }
 
 class _HomeTabletScreenState extends State<HomeTabletScreen> {
-  final HomeProvider _homeProvider = GetIt.I.get<HomeProvider>();
+  final HomeProvider _homeProvider = locator.get();
 
   @override
   void initState() {

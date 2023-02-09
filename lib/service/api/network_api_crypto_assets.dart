@@ -22,7 +22,7 @@ class NetworkApiCryptoAssets extends INetworkApiCryptoAssets {
       return cryptoList;
     } catch (ex) {
       // ignore: avoid_print
-      print(ex);
+      print("error get data crypro assets : ${ex}");
     }
 
     return [];

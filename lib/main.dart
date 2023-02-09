@@ -39,17 +39,16 @@ class MyApp extends StatelessWidget {
           backgroundColor: ColorsApp.backgroundScreenDark,
           body: ScreenTypeLayout(
             // ignore: prefer_const_constructors
-            breakpoints: ScreenBreakpoints(
-              tablet: 550,
-              desktop: 688,
-              watch: 250
-            ),
+            breakpoints:
+                const ScreenBreakpoints(tablet: 550, desktop: 688, watch: 250),
             mobile: OrientationLayoutBuilder(
-                portrait: (context) => const HomeMobileScreen(),
-                landscape: (context) => const HomeTabletScreen()),
-            tablet:OrientationLayoutBuilder(
-                portrait: (context) => const HomeTabletScreen(),
-                landscape: (context) => const HomeDesktopScreen()),
+              portrait: (context) => const HomeMobileScreen(),
+              landscape: (context) => const HomeTabletScreen(),
+            ),
+            tablet: OrientationLayoutBuilder(
+              portrait: (context) => const HomeTabletScreen(),
+              landscape: (context) => const HomeDesktopScreen(),
+            ),
             desktop: const HomeDesktopScreen(),
             watch: const HomeWatchScreen(),
           ),

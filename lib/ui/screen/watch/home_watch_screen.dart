@@ -10,6 +10,7 @@ import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../../../di/init_service_locator.dart';
 import 'detail_watch_screen.dart';
 
 class HomeWatchScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ class HomeWatchScreen extends StatefulWidget {
 }
 
 class _HomeWatchScreenState extends State<HomeWatchScreen> {
-  final HomeProvider _homeProvider = GetIt.I.get<HomeProvider>();
+  final HomeProvider _homeProvider = locator.get();
 
   @override
   void initState() {

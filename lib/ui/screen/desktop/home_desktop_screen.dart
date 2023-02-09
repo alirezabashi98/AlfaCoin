@@ -8,6 +8,7 @@ import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../../../di/init_service_locator.dart';
 import '../../widget/desktop/item_crypto_desktop.dart';
 import '../../widget/desktop/item_title_crypto_desktop.dart';
 import 'detail_desktop_screen.dart';
@@ -20,7 +21,7 @@ class HomeDesktopScreen extends StatefulWidget {
 }
 
 class _HomeDesktopScreenState extends State<HomeDesktopScreen> {
-  final HomeProvider _homeProvider = GetIt.I.get<HomeProvider>();
+  final HomeProvider _homeProvider = locator.get();
 
   @override
   void initState() {

@@ -9,6 +9,7 @@ import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../../../di/init_service_locator.dart';
 import 'detail_mobile_screen.dart';
 
 class HomeMobileScreen extends StatefulWidget {
@@ -19,7 +20,7 @@ class HomeMobileScreen extends StatefulWidget {
 }
 
 class _HomeMobileScreenState extends State<HomeMobileScreen> {
-  final HomeProvider _homeProvider = GetIt.I.get<HomeProvider>();
+  final HomeProvider _homeProvider = locator.get();
 
   @override
   void initState() {

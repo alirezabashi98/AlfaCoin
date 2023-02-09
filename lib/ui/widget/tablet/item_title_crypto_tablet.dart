@@ -21,7 +21,7 @@ class ItemTitleCryptoTablet extends StatelessWidget {
         style: style,
       ),
       leading: SizedBox(
-        width: 20.w,
+        width: 17.w,
         child: Center(
           child: Row(
             children: [
@@ -35,7 +35,7 @@ class ItemTitleCryptoTablet extends StatelessWidget {
               ),
               const Spacer(),
               SizedBox(
-                width: 8.w,
+                width: 7.w,
                 child: Text(
                   '',
                   style: style,
@@ -46,7 +46,7 @@ class ItemTitleCryptoTablet extends StatelessWidget {
         ),
       ),
       trailing: SizedBox(
-        width: 85.w,
+        width: 60.w,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [

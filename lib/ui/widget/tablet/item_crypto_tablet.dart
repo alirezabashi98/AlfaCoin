@@ -44,7 +44,7 @@ class ItemCryptoTablet extends StatelessWidget {
         ),
       ),
       leading: SizedBox(
-        width: 20.w,
+        width: 17.w,
         child: Center(
           child: Row(
             children: [
@@ -68,7 +68,7 @@ class ItemCryptoTablet extends StatelessWidget {
               ),
               const Spacer(),
               SizedBox(
-                width: 10.w,
+                width: 9.w,
                 child: CachedNetworkImage(
                   imageUrl:
                       "https://assets.coincap.io/assets/icons/${(crypto.symbol.toLowerCase() == 'ustc') ? 'ust' : crypto.symbol.toLowerCase()}@2x.png",
@@ -80,7 +80,7 @@ class ItemCryptoTablet extends StatelessWidget {
         ),
       ),
       trailing: SizedBox(
-        width: 85.w,
+        width: 60.w,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
