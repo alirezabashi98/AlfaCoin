@@ -75,7 +75,7 @@ class ItemCryptoTablet extends StatelessWidget {
         ),
       ),
       trailing: SizedBox(
-        width: 60.w,
+        width: 70.w,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
