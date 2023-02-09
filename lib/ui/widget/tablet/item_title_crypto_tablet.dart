@@ -104,7 +104,7 @@ class ItemTitleCryptoTablet extends StatelessWidget {
               width: 8.w,
               child: Center(
                 child: Icon(
-                  Icons.trending_down,
+                  Icons.trending_up,
                   size: 24,
                   color: style.color,
                 ),

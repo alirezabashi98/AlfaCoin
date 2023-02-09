@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
 
     return Sizer(
       builder: (context, orientation, deviceType) => ThemeProvider(
-        initTheme: lightTheme,
+        initTheme: initTheme,
         builder: (p0, myTheme) => MaterialApp(
           theme: myTheme,
           debugShowCheckedModeBanner: false,

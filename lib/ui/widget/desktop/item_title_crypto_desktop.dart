@@ -98,7 +98,7 @@ class ItemTitleCryptoDesktop extends StatelessWidget {
               width: 50,
               child: Center(
                 child: Icon(
-                  Icons.trending_down,
+                  Icons.trending_up,
                   size: 24,
                   color: style.color,
                 ),

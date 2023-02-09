@@ -72,7 +72,7 @@ class ItemTitleCryptoMobile extends StatelessWidget {
               width: 5.w,
               child: Center(
                 child: Icon(
-                  Icons.trending_down,
+                  Icons.trending_up,
                   color: style!.color,
                 ),
               ),
