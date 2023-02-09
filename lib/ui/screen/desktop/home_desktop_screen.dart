@@ -32,7 +32,6 @@ class _HomeDesktopScreenState extends State<HomeDesktopScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.backgroundScreenDark,
       body: SafeArea(
         child: ChangeNotifierProvider(
           create: (context) => _homeProvider,
@@ -113,8 +112,8 @@ class _HomeDesktopScreenState extends State<HomeDesktopScreen> {
         children: [
           Expanded(
             child: Shimmer.fromColors(
-              baseColor: Colors.grey.shade300,
-              highlightColor: Colors.grey.shade100,
+              baseColor: ColorsApp.red,
+              highlightColor: ColorsApp.green,
               enabled: true,
               child: ListView.builder(
                 itemBuilder: (context, index) {

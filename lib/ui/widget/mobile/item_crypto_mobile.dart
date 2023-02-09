@@ -12,6 +12,7 @@ class ItemCryptoMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var style = Theme.of(context).textTheme.bodyText1!;
     var minFontSize = 7.0;
     var minFontSizePrice = 11.0;
     var maxFontSize = 14.0;
@@ -35,10 +36,7 @@ class ItemCryptoMobile extends StatelessWidget {
         minFontSize: minFontSize,
         maxFontSize: maxFontSize,
         maxLines: 1,
-        style: const TextStyle(
-          color: ColorsApp.grey,
-          fontSize: 12,
-        ),
+        style: style.copyWith(fontSize: 12)
       ),
       leading: SizedBox(
         width: 20.0.w,
@@ -56,11 +54,7 @@ class ItemCryptoMobile extends StatelessWidget {
                           : "0${crypto.rank}"
                       : crypto.rank.toString(),
                   maxLines: 1,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: ColorsApp.grey,
-                  ),
+                  style: style.copyWith(fontSize: 16,fontWeight: FontWeight.bold)
                 ),
               ),
               const Spacer(),
@@ -92,7 +86,7 @@ class ItemCryptoMobile extends StatelessWidget {
                     minFontSize: minFontSizePrice,
                     maxFontSize: maxFontSizePrise,
                     maxLines: 1,
-                    style: const TextStyle(color: ColorsApp.grey,fontSize: 17 ),
+                    style: style.copyWith(fontSize: 17),
                   ),
                   AutoSizeText(
                     minFontSize: minFontSize,

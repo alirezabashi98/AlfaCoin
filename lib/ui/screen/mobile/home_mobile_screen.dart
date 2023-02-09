@@ -3,6 +3,7 @@ import 'package:alfa_coin/constants/constants.dart';
 import 'package:alfa_coin/providers/home_provider.dart';
 import 'package:alfa_coin/ui/widget/mobile/item_crypto_mobile.dart';
 import 'package:alfa_coin/ui/widget/mobile/item_title_crypto_mobile.dart';
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get_it/get_it.dart';
@@ -30,17 +31,18 @@ class _HomeMobileScreenState extends State<HomeMobileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ColorsApp.backgroundScreenDark,
-      body: SafeArea(
-        child: ChangeNotifierProvider(
-          create: (context) => _homeProvider,
-          child: Consumer<HomeProvider>(
-            builder: (context, provider, child) {
-              return provider.cryptoList.isEmpty
-                  ? _shimmerLoading()
-                  : getUi(provider);
-            },
+    return ThemeSwitchingArea(
+      child: Scaffold(
+        body: SafeArea(
+          child: ChangeNotifierProvider(
+            create: (context) => _homeProvider,
+            child: Consumer<HomeProvider>(
+              builder: (context, provider, child) {
+                return provider.cryptoList.isEmpty
+                    ? _shimmerLoading()
+                    : getUi(provider);
+              },
+            ),
           ),
         ),
       ),

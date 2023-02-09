@@ -8,7 +8,7 @@ class ItemTitleCryptoMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var style = const TextStyle(color: ColorsApp.grey, fontSize: 11);
+    var style = Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 11);
     var minFontSize = 7.0;
     var maxFontSize = 14.0;
     var maxFontSizeRank = 16.0;
@@ -22,7 +22,7 @@ class ItemTitleCryptoMobile extends StatelessWidget {
         style: style,
       ),
       leading: SizedBox(
-        width: 17.w,
+        width: 20.w,
         child: Center(
           child: Row(
             children: [
@@ -70,10 +70,10 @@ class ItemTitleCryptoMobile extends StatelessWidget {
             SizedBox(width: 2.w),
             SizedBox(
               width: 5.w,
-              child: const Center(
+              child: Center(
                 child: Icon(
                   Icons.trending_down,
-                  color: ColorsApp.grey,
+                  color: style!.color,
                 ),
               ),
             ),

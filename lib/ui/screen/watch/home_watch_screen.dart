@@ -32,7 +32,6 @@ class _HomeWatchScreenState extends State<HomeWatchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.backgroundScreenDark,
       body: SafeArea(
         child: ChangeNotifierProvider(
           create: (context) => _homeProvider,

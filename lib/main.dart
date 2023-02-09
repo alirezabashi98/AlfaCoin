@@ -2,13 +2,13 @@ import 'dart:ui';
 
 import 'package:alfa_coin/constants/constants.dart';
 import 'package:alfa_coin/di/init_service_locator.dart';
-import 'package:alfa_coin/ui/screen/desktop/home_desktop_screen.dart';
-import 'package:alfa_coin/ui/screen/mobile/home_mobile_screen.dart';
-import 'package:alfa_coin/ui/screen/tablet/home_tablet_screen.dart';
-import 'package:alfa_coin/ui/screen/watch/home_watch_screen.dart';
+import 'package:alfa_coin/ui/screen/home_screen.dart';
+import 'package:alfa_coin/ui/widget/app_bar_home.dart';
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
-import 'package:responsive_builder/responsive_builder.dart';
 import 'package:sizer/sizer.dart';
+
+import 'constants/theme_config.dart';
 
 void main() async {
   await initServiceLocator();
@@ -31,27 +31,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isPlatformDark =
+        WidgetsBinding.instance.window.platformBrightness == Brightness.dark;
+    final initTheme = isPlatformDark ? darkTheme : lightTheme;
+
     return Sizer(
-      builder: (context, orientation, deviceType) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        scrollBehavior: MyCustomScrollBehavior(),
-        home: Scaffold(
-          backgroundColor: ColorsApp.backgroundScreenDark,
-          body: ScreenTypeLayout(
-            // ignore: prefer_const_constructors
-            breakpoints:
-                const ScreenBreakpoints(tablet: 550, desktop: 688, watch: 250),
-            mobile: OrientationLayoutBuilder(
-              portrait: (context) => const HomeMobileScreen(),
-              landscape: (context) => const HomeTabletScreen(),
-            ),
-            tablet: OrientationLayoutBuilder(
-              portrait: (context) => const HomeTabletScreen(),
-              landscape: (context) => const HomeDesktopScreen(),
-            ),
-            desktop: const HomeDesktopScreen(),
-            watch: const HomeWatchScreen(),
-          ),
+      builder: (context, orientation, deviceType) => ThemeProvider(
+        initTheme: lightTheme,
+        builder: (p0, myTheme) => MaterialApp(
+          theme: myTheme,
+          debugShowCheckedModeBanner: false,
+          scrollBehavior: MyCustomScrollBehavior(),
+          home: const HomeScreen(),
         ),
       ),
     );

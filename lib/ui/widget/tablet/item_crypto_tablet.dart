@@ -13,8 +13,7 @@ class ItemCryptoTablet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var style = const TextStyle(color: ColorsApp.grey, fontSize: 14);
-    var stylePrice = const TextStyle(color: ColorsApp.grey, fontSize: 17);
+    var style = Theme.of(context).textTheme.bodyText1!;
     var minFontSize = 7.0;
     var maxFontSize = 15.0;
     var maxFontSizeSubtitle = 13.0;
@@ -59,11 +58,7 @@ class ItemCryptoTablet extends StatelessWidget {
                           ? "00${crypto.rank}"
                           : "0${crypto.rank}"
                       : crypto.rank.toString(),
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: ColorsApp.grey,
-                  ),
+                  style: style.copyWith(fontSize: 16,fontWeight: FontWeight.bold)
                 ),
               ),
               const Spacer(),
@@ -92,7 +87,7 @@ class ItemCryptoTablet extends StatelessWidget {
                 minFontSize: minFontSize,
                 maxFontSize: maxFontSize,
                 "\$${abbreviateNumber(crypto.marketCapUsd)}",
-                style: style,
+                style: style.copyWith(fontSize: 14),
                 textAlign: TextAlign.start,
               ),
             ),
@@ -104,7 +99,7 @@ class ItemCryptoTablet extends StatelessWidget {
                 minFontSize: minFontSize,
                 maxFontSize: maxFontSize,
                 abbreviateNumber(crypto.supply),
-                style: style,
+                style: style.copyWith(fontSize: 14),
                 textAlign: TextAlign.start,
               ),
             ),
@@ -120,7 +115,7 @@ class ItemCryptoTablet extends StatelessWidget {
                     minFontSize: minFontSizePrice,
                     maxFontSize: maxFontSizePrice,
                     "\$${crypto.priceUsd.toStringAsFixed(2)}",
-                    style: stylePrice,
+                    style: style.copyWith(fontSize: 17),
                   ),
                   AutoSizeText(
                     "${crypto.changePercent24Hr.toStringAsFixed(2)}%",

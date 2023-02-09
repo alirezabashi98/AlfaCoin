@@ -8,7 +8,7 @@ class ItemTitleCryptoWatch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var style = const TextStyle(color: ColorsApp.grey, fontSize: 11);
+    var style = Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 11);
     var minFontSize = 5.0;
     var maxFontSize = 13.0;
 

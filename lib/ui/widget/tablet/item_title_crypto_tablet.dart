@@ -8,7 +8,7 @@ class ItemTitleCryptoTablet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var style = const TextStyle(color: ColorsApp.grey, fontSize: 13);
+    var style = Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 13);
     var minFontSize = 7.0;
     var maxFontSize = 14.0;
 
@@ -102,11 +102,11 @@ class ItemTitleCryptoTablet extends StatelessWidget {
             SizedBox(width: 1.w),
             SizedBox(
               width: 8.w,
-              child: const Center(
+              child: Center(
                 child: Icon(
                   Icons.trending_down,
                   size: 24,
-                  color: ColorsApp.grey,
+                  color: style.color,
                 ),
               ),
             ),

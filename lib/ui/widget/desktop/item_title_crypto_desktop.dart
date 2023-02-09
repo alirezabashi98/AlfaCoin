@@ -6,7 +6,7 @@ class ItemTitleCryptoDesktop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var style = const TextStyle(color: ColorsApp.grey, fontSize: 14);
+    var style = Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 14);
 
     return ListTile(
       title: Text(
@@ -94,13 +94,13 @@ class ItemTitleCryptoDesktop extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(
+            SizedBox(
               width: 50,
               child: Center(
                 child: Icon(
                   Icons.trending_down,
                   size: 24,
-                  color: ColorsApp.grey,
+                  color: style.color,
                 ),
               ),
             ),

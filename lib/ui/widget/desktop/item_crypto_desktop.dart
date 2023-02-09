@@ -11,6 +11,7 @@ class ItemCryptoDesktop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var style = Theme.of(context).textTheme.bodyText1!;
     return ListTile(
       title: AutoSizeText(
         crypto.name,
@@ -23,10 +24,7 @@ class ItemCryptoDesktop extends StatelessWidget {
       subtitle: AutoSizeText(
         crypto.symbol,
         maxLines: 1,
-        style: const TextStyle(
-          color: ColorsApp.grey,
-          fontSize: 12,
-        ),
+        style: style.copyWith(fontSize: 12),
       ),
       leading: SizedBox(
         width: 82.0,
@@ -42,11 +40,7 @@ class ItemCryptoDesktop extends StatelessWidget {
                           : "0${crypto.rank}"
                       : crypto.rank.toString(),
                   maxLines: 1,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: ColorsApp.grey,
-                  ),
+                  style: style.copyWith(fontSize: 16,fontWeight: FontWeight.bold)
                 ),
               ),
               const Spacer(),
@@ -72,7 +66,7 @@ class ItemCryptoDesktop extends StatelessWidget {
               width: 70,
               child: AutoSizeText(
                 "\$${abbreviateNumber(crypto.marketCapUsd)}",
-                style: const TextStyle(color: ColorsApp.grey, fontSize: 14),
+                style: style.copyWith(fontSize: 14),
                 maxLines: 1,
                 textAlign: TextAlign.start,
               ),
@@ -83,7 +77,7 @@ class ItemCryptoDesktop extends StatelessWidget {
               child: AutoSizeText(
                 abbreviateNumber(crypto.supply),
                 maxLines: 1,
-                style: const TextStyle(color: ColorsApp.grey, fontSize: 14),
+                style: style.copyWith(fontSize: 14),
                 textAlign: TextAlign.start,
               ),
             ),
@@ -97,13 +91,13 @@ class ItemCryptoDesktop extends StatelessWidget {
                   AutoSizeText(
                     "\$${abbreviateNumber(crypto.volumeUsd24Hr)}",
                     maxLines: 1,
-                    style: const TextStyle(color: ColorsApp.grey, fontSize: 14),
+                    style: style.copyWith(fontSize: 14),
                     textAlign: TextAlign.start,
                   ),
                   AutoSizeText(
                     "\$${abbreviateNumber(crypto.vwap24Hr)}",
                     maxLines: 1,
-                    style: const TextStyle(color: ColorsApp.grey, fontSize: 14),
+                    style: style.copyWith(fontSize: 14),
                     textAlign: TextAlign.start,
                   ),
                 ],
@@ -119,7 +113,7 @@ class ItemCryptoDesktop extends StatelessWidget {
                   AutoSizeText(
                     "\$${crypto.priceUsd.toStringAsFixed(2)}",
                     maxLines: 1,
-                    style: const TextStyle(color: ColorsApp.grey, fontSize: 17),
+                    style: style.copyWith(fontSize: 17),
                   ),
                   AutoSizeText(
                     "${crypto.changePercent24Hr.toStringAsFixed(2)}%",

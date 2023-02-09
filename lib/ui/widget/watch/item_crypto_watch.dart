@@ -12,6 +12,7 @@ class ItemCryptoWatch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var style = Theme.of(context).textTheme.bodyText1!;
     return ListTile(
       title: AutoSizeText(
         maxLines: 1,
@@ -24,10 +25,7 @@ class ItemCryptoWatch extends StatelessWidget {
       subtitle: AutoSizeText(
         crypto.symbol,
         maxLines: 1,
-        style: const TextStyle(
-          color: ColorsApp.grey,
-          fontSize: 12,
-        ),
+        style: style.copyWith(fontSize: 12),
       ),
       trailing: SizedBox(
         width: 40.w,
@@ -41,7 +39,7 @@ class ItemCryptoWatch extends StatelessWidget {
                 AutoSizeText(
                   maxLines: 1,
                   crypto.priceUsd.toStringAsFixed(2),
-                  style: const TextStyle(color: ColorsApp.grey, fontSize: 15),
+                  style: style.copyWith(fontSize: 15),
                 ),
                 AutoSizeText(
                   maxLines: 1,
