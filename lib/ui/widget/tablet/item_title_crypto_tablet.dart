@@ -50,9 +50,9 @@ class ItemTitleCryptoTablet extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            const Spacer(),
+            SizedBox(width: 2.w),
             SizedBox(
-              width: 70,
+              width: 65,
               child: AutoSizeText(
                 maxLines: 1,
                 minFontSize: minFontSize,
@@ -64,7 +64,7 @@ class ItemTitleCryptoTablet extends StatelessWidget {
             ),
             const Spacer(),
             SizedBox(
-              width: 70,
+              width: 65,
               child:
               AutoSizeText(
                 maxLines: 1,
@@ -101,11 +101,10 @@ class ItemTitleCryptoTablet extends StatelessWidget {
             ),
             SizedBox(width: 1.w),
             SizedBox(
-              width: 8.w,
+              width: 28,
               child: Center(
                 child: Icon(
                   Icons.trending_up,
-                  size: 24,
                   color: style.color,
                 ),
               ),
