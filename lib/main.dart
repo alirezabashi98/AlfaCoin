@@ -1,9 +1,7 @@
 import 'dart:ui';
 
-import 'package:alfa_coin/constants/constants.dart';
 import 'package:alfa_coin/di/init_service_locator.dart';
 import 'package:alfa_coin/ui/screen/home_screen.dart';
-import 'package:alfa_coin/ui/widget/app_bar_home.dart';
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';

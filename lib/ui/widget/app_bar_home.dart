@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 
 import '../../constants/theme_config.dart';
 
-AppBar appBarHome() {
+AppBar appBarHome(BuildContext context) {
+  var themeDark = Theme.of(context).appBarTheme.iconTheme!.color == ColorsApp.grey;
   return AppBar(
-    backgroundColor: ColorsApp.backgroundScreenDark,
     title: const AutoSizeText(
       'AlfaCoin',
       minFontSize: 7,
@@ -23,7 +23,7 @@ AppBar appBarHome() {
               theme:
                   theme.brightness == Brightness.light ? darkTheme : lightTheme,
             ),
-            icon: const Icon( Icons.brightness_4, size: 25,color: ColorsApp.grey,),
+            icon: Icon( themeDark ? Icons.sunny : Icons.brightness_3, size: 25),
           );
         },
       ),

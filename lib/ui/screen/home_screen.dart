@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ThemeSwitchingArea(
       child: Scaffold(
-        appBar: appBarHome(),
+        appBar: appBarHome(context),
         body: SafeArea(
           child: ScreenTypeLayout(
             // ignore: prefer_const_constructors
