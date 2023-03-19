@@ -4,8 +4,6 @@ import 'package:alfa_coin/di/init_service_locator.dart';
 import 'package:alfa_coin/ui/screen/home_screen.dart';
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
-
 import 'constants/theme_config.dart';
 
 void main() async {
@@ -33,8 +31,7 @@ class MyApp extends StatelessWidget {
         WidgetsBinding.instance.window.platformBrightness == Brightness.dark;
     final initTheme = isPlatformDark ? darkTheme : lightTheme;
 
-    return Sizer(
-      builder: (context, orientation, deviceType) => ThemeProvider(
+    return ThemeProvider(
         initTheme: initTheme,
         builder: (p0, myTheme) => MaterialApp(
           theme: myTheme,
@@ -42,7 +39,6 @@ class MyApp extends StatelessWidget {
           scrollBehavior: MyCustomScrollBehavior(),
           home: const HomeScreen(),
         ),
-      ),
-    );
+      );
   }
 }
