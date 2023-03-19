@@ -17,17 +17,25 @@ class ItemCrypto extends StatelessWidget {
           padding: const EdgeInsets.only(top: 8),
           child: Table(
             columnWidths: <int, TableColumnWidth>{
-              0: FixedColumnWidth(80),
-              1: FixedColumnWidth(90),
-              2: FlexColumnWidth(),
-              if (constraints.maxWidth > 500) ...{
-                3: FixedColumnWidth(82),
-                4: FixedColumnWidth(82),
-                5: FixedColumnWidth(100),
-                6: IntrinsicColumnWidth(),
+              0: const FixedColumnWidth(80),
+              1: const FixedColumnWidth(90),
+              2: const FlexColumnWidth(),
+              if (constraints.maxWidth > 500 && constraints.maxWidth < 1100) ...{
+                3: const FixedColumnWidth(82),
+                4: const FixedColumnWidth(82),
+                5: const FixedColumnWidth(100),
+                6: const IntrinsicColumnWidth(),
+              }else if (constraints.maxWidth >= 1100) ...{
+                3: const FixedColumnWidth(100),
+                4: const FixedColumnWidth(100),
+                5: const FixedColumnWidth(100),
+                6: const FixedColumnWidth(100),
+                7: const FixedColumnWidth(100),
+                8: const IntrinsicColumnWidth(),
+                9: const IntrinsicColumnWidth(),
               } else ...{
-                3: FixedColumnWidth(100),
-                4: IntrinsicColumnWidth(),
+                3: const FixedColumnWidth(100),
+                4: const IntrinsicColumnWidth(),
               }
             },
             defaultVerticalAlignment: TableCellVerticalAlignment.middle,
@@ -108,6 +116,28 @@ class ItemCrypto extends StatelessWidget {
                       padding: const EdgeInsets.only(left: 10),
                       child: Text(
                         '\$${formatNumber(crypto.vwap24Hr)}',
+                        style: style.copyWith(
+                          fontSize: 13,
+                        ),
+                        maxLines: 1,
+                      ),
+                    ),
+                  },
+                  if (constraints.maxWidth >= 1100) ...{
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Text(
+                        '\$${formatNumber(crypto.supply)}',
+                        style: style.copyWith(
+                          fontSize: 13,
+                        ),
+                        maxLines: 1,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Text(
+                        '\$${formatNumber(crypto.volumeUsd24Hr)}',
                         style: style.copyWith(
                           fontSize: 13,
                         ),
