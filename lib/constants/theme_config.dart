@@ -2,6 +2,7 @@ import 'package:alfa_coin/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 ThemeData lightTheme = ThemeData.light().copyWith(
+  visualDensity: VisualDensity.adaptivePlatformDensity,
   primaryColor: Colors.blue,
   appBarTheme: const AppBarTheme(
     backgroundColor: Colors.blue,
@@ -15,6 +16,7 @@ ThemeData lightTheme = ThemeData.light().copyWith(
   ),
 );
 ThemeData darkTheme = ThemeData.dark().copyWith(
+  visualDensity: VisualDensity.adaptivePlatformDensity,
   primaryColor: ColorsApp.backgroundScreenDark,
   appBarTheme: const AppBarTheme(
     backgroundColor: ColorsApp.backgroundScreenDark,

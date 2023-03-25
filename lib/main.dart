@@ -1,7 +1,7 @@
 import 'dart:ui';
 
 import 'package:alfa_coin/di/init_service_locator.dart';
-import 'package:alfa_coin/ui/screen/home_screen.dart';
+import 'package:alfa_coin/ui/home_page.dart';
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'constants/theme_config.dart';
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           theme: myTheme,
           debugShowCheckedModeBanner: false,
           scrollBehavior: MyCustomScrollBehavior(),
-          home: const HomeScreen(),
+          home: const HomePage(),
         ),
       );
   }

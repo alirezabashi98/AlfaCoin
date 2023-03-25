@@ -1,26 +1,131 @@
-import 'package:alfa_coin/ui/responsive_layout.dart';
-import 'package:alfa_coin/ui/screen/mobile/home_mobile_screen.dart';
-import 'package:alfa_coin/ui/screen/tablet/home_tablet_screen.dart';
-import 'package:alfa_coin/ui/widget/app_bar_home.dart';
+import 'package:alfa_coin/Model/cryptocurrency_model.dart';
+import 'package:alfa_coin/constants/constants.dart';
+import 'package:alfa_coin/providers/home_provider.dart';
+import 'package:alfa_coin/ui/detail_page.dart';
+import 'package:alfa_coin/ui/screen/detail_mobile_screen.dart';
+import 'package:alfa_coin/ui/widget/crypto/item_crypto.dart';
+import 'package:alfa_coin/ui/widget/crypto/item_title_crypto.dart';
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shimmer/shimmer.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+import '../../di/init_service_locator.dart';
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final HomeProvider _homeProvider = locator.get();
+
+  @override
+  void initState() {
+    super.initState();
+    _homeProvider.loadDate();
+  }
 
   @override
   Widget build(BuildContext context) {
     return ThemeSwitchingArea(
-      child: Scaffold(
-          appBar: appBarHome(context),
+      child:  Scaffold(
           body: SafeArea(
-            child: ResponsiveLayout(
-              MobileScaffold: const HomeTabletScreen(),
-              TabletScaffold: const HomeTabletScreen(),
-              DesktopScaffold: const HomeTabletScreen(),
+            child: ChangeNotifierProvider(
+              create: (context) => _homeProvider,
+              child: Consumer<HomeProvider>(
+                builder: (context, provider, child) {
+                  return provider.cryptoList.isEmpty
+                      ? _shimmerLoading()
+                      : getUi(provider);
+                },
+              ),
             ),
           ),
+      ),
+    );
+  }
+
+  getUi(HomeProvider provider) {
+    return Column(
+      children: [
+        const ItemTitleCrypto(),
+        Expanded(
+          child: ListView.builder(
+            itemCount: provider.cryptoList.length,
+            itemBuilder: (context, index) {
+              var list = provider.cryptoList;
+              var item = list[index];
+              return GestureDetector(
+                onTap: () {
+                  try {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailePage(
+                          crypto: item,
+                        ),
+                      ),
+                    );
+                  } catch (ex) {
+                    print('error');
+                  }
+                },
+                child: ItemCrypto(
+                  crypto: item,
+                ),
+              );
+            },
+          ),
         ),
-      );
+      ],
+    );
+  }
+
+  _shimmerLoading() {
+    return SizedBox(
+      width: double.infinity,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          const ItemTitleCrypto(),
+          Expanded(
+            child: Shimmer.fromColors(
+              baseColor: ColorsApp.red,
+              highlightColor: ColorsApp.green,
+              enabled: true,
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return ItemCrypto(
+                    crypto: CryptocurrencyModel(
+                      "1",
+                      index + 1,
+                      "btc",
+                      "btc",
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                      0,
+                    ),
+                  );
+                },
+                itemCount: 16,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _homeProvider.channel.sink.close();
   }
 }
