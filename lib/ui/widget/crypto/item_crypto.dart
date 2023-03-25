@@ -17,67 +17,76 @@ class ItemCrypto extends StatelessWidget {
           padding: const EdgeInsets.only(top: 8),
           child: Table(
             columnWidths: <int, TableColumnWidth>{
-              0: const FixedColumnWidth(80),
-              1: const FixedColumnWidth(90),
-              2: const FlexColumnWidth(),
-              if (constraints.maxWidth > 500 && constraints.maxWidth < 1100) ...{
-                3: const FixedColumnWidth(82),
-                4: const FixedColumnWidth(82),
-                5: const FixedColumnWidth(100),
-                6: const IntrinsicColumnWidth(),
-              }else if (constraints.maxWidth >= 1100) ...{
-                3: const FixedColumnWidth(100),
-                4: const FixedColumnWidth(100),
-                5: const FixedColumnWidth(100),
-                6: const FixedColumnWidth(100),
-                7: const FixedColumnWidth(100),
-                8: const IntrinsicColumnWidth(),
-                9: const IntrinsicColumnWidth(),
+              if (constraints.maxWidth < 267) ...{
+                0: const FixedColumnWidth(82),
+                1: const IntrinsicColumnWidth(),
               } else ...{
-                3: const FixedColumnWidth(100),
-                4: const IntrinsicColumnWidth(),
+                0: const FixedColumnWidth(74),
+                1: const FixedColumnWidth(80),
+                2: const FlexColumnWidth(),
+                if (constraints.maxWidth > 500 &&
+                    constraints.maxWidth < 1100) ...{
+                  3: const FixedColumnWidth(82),
+                  4: const FixedColumnWidth(82),
+                  5: const FixedColumnWidth(100),
+                  6: const IntrinsicColumnWidth(),
+                } else if (constraints.maxWidth >= 1100) ...{
+                  3: const FixedColumnWidth(100),
+                  4: const FixedColumnWidth(100),
+                  5: const FixedColumnWidth(100),
+                  6: const FixedColumnWidth(100),
+                  7: const FixedColumnWidth(100),
+                  8: const IntrinsicColumnWidth(),
+                  9: const IntrinsicColumnWidth(),
+                } else ...{
+                  3: const IntrinsicColumnWidth(),
+                  4: const IntrinsicColumnWidth(),
+                }
               }
             },
             defaultVerticalAlignment: TableCellVerticalAlignment.middle,
             children: [
               TableRow(
                 children: [
-                  Container(
-                    margin: const EdgeInsets.only(top: 4),
-                    height: 40,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          crypto.rank < 100
-                              ? crypto.rank < 10
-                                  ? "00${crypto.rank}"
-                                  : "0${crypto.rank}"
-                              : crypto.rank.toString(),
-                          maxLines: 1,
-                          style: style.copyWith(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
+                  if (constraints.maxWidth >= 267)
+                    Container(
+                      margin: const EdgeInsets.only(top: 4),
+                      height: 40,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            crypto.rank < 100
+                                ? crypto.rank < 10
+                                    ? "00${crypto.rank}"
+                                    : "0${crypto.rank}"
+                                : crypto.rank.toString(),
+                            maxLines: 1,
+                            style: style.copyWith(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 28,
-                          height: 28,
-                          child: CachedNetworkImage(
-                            imageUrl:
-                                "https://assets.coincap.io/assets/icons/${(crypto.symbol.toLowerCase() == 'ustc') ? 'ust' : crypto.symbol.toLowerCase()}@2x.png",
-                            placeholder: (context, url) => const Center(
-                                child: CircularProgressIndicator()),
-                            errorWidget: (context, url, error) =>
-                                const Icon(Icons.error),
+                          SizedBox(
+                            width: 28,
+                            height: 28,
+                            child: CachedNetworkImage(
+                              imageUrl:
+                                  "https://assets.coincap.io/assets/icons/${(crypto.symbol.toLowerCase() == 'ustc') ? 'ust' : crypto.symbol.toLowerCase()}@2x.png",
+                              placeholder: (context, url) => const Center(
+                                  child: CircularProgressIndicator()),
+                              errorWidget: (context, url, error) =>
+                                  const Icon(Icons.error),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
                   Container(
-                    margin: const EdgeInsets.only(top: 4),
+                    margin: (constraints.maxWidth < 267)
+                        ? const EdgeInsets.only(top: 4, left: 12)
+                        : const EdgeInsets.only(top: 4),
                     height: 40,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -146,6 +155,9 @@ class ItemCrypto extends StatelessWidget {
                     ),
                   },
                   Container(
+                    padding: (constraints.maxWidth < 267)
+                        ? const EdgeInsets.only(top: 4, right: 12)
+                        : null,
                     margin: const EdgeInsets.only(top: 4),
                     height: 40,
                     child: Column(
@@ -169,14 +181,15 @@ class ItemCrypto extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 10),
-                    width: 24,
-                    height: 24,
-                    child: Center(
-                      child: _getIconChangePercent(crypto.changePercent24Hr),
+                  if (constraints.maxWidth >= 267)
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 10),
+                      width: 24,
+                      height: 24,
+                      child: Center(
+                        child: _getIconChangePercent(crypto.changePercent24Hr),
+                      ),
                     ),
-                  ),
                 ],
               ),
             ],
