@@ -1,8 +1,10 @@
+import 'dart:io';
+
 import 'package:alfa_coin/Model/cryptocurrency_model.dart';
 import 'package:alfa_coin/constants/constants.dart';
 import 'package:alfa_coin/constants/theme_config.dart';
-import 'package:alfa_coin/ui/responsive_layout.dart';
 import 'package:alfa_coin/ui/screen/detail_screen.dart';
+import 'package:alfa_coin/ui/screen/web_view_mobile_table.dart';
 import 'package:alfa_coin/utility/open_web.dart';
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -58,7 +60,14 @@ class DetailePage extends StatelessWidget {
       automaticallyImplyLeading: true,
       actions: [
         GestureDetector(
-          onTap: () => openWebInDesktop(crypto.symbol),
+          onTap: () => (Platform.isAndroid || Platform.isIOS)
+              ? Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        WebViewMobileAndTablet(cryptoSymbol: crypto.symbol),
+                  ),
+                )
+              : openWebInDesktop(crypto.symbol),
           child: Padding(
             padding: const EdgeInsets.only(right: 8.0),
             child: SvgPicture.asset(
