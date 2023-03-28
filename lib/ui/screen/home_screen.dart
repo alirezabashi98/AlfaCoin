@@ -2,7 +2,7 @@ import 'package:alfa_coin/Model/cryptocurrency_model.dart';
 import 'package:alfa_coin/constants/constants.dart';
 import 'package:alfa_coin/providers/home_provider.dart';
 import 'package:alfa_coin/ui/detail_page.dart';
-import 'package:alfa_coin/ui/screen/detail_mobile_screen.dart';
+import 'package:alfa_coin/ui/screen/detail_screen.dart';
 import 'package:alfa_coin/ui/widget/crypto/item_crypto.dart';
 import 'package:alfa_coin/ui/widget/crypto/item_title_crypto.dart';
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';

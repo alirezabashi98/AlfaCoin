@@ -3,12 +3,9 @@ import 'package:alfa_coin/constants/constants.dart';
 import 'package:alfa_coin/di/init_service_locator.dart';
 import 'package:alfa_coin/service/api/network_api_crypto_assets_history.dart';
 import 'package:alfa_coin/utility/format_number.dart';
-import 'package:alfa_coin/utility/open_web.dart';
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../Model/cryptocurrency_model.dart';
 
@@ -45,53 +42,6 @@ class _LineChartDesktopScreenState extends State<LineChartDesktopScreen> {
     sizeScreen = MediaQuery.of(context).size;
     return ThemeSwitchingArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: Row(
-            children: [
-              SizedBox(
-                width: 30.0,
-                height: 30,
-                child: CachedNetworkImage(
-                  imageUrl:
-                      "https://assets.coincap.io/assets/icons/${(widget.crypto.symbol.toLowerCase() == 'ustc') ? 'ust' : widget.crypto.symbol.toLowerCase()}@2x.png",
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(widget.crypto.name, style: style.copyWith(fontSize: 16)),
-                  Text(
-                    widget.crypto.symbol,
-                    style: style.copyWith(fontSize: 12),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          centerTitle: true,
-          leading: GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: const Icon(
-              Icons.arrow_back_ios,
-            ),
-          ),
-          automaticallyImplyLeading: true,
-          actions: [
-            GestureDetector(
-              onTap: () => openWebInDesktop(widget.crypto.symbol),
-              child: Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: SvgPicture.asset(
-                  width: 32,
-                  'assets/svg/chart.svg',
-                  semanticsLabel: 'Technical Chart',
-                ),
-              ),
-            ),
-          ],
-        ),
         body: SafeArea(
           child: FutureBuilder<List<CryptoHistoryModel>>(
             future: _getCryptoList.getHistoryCrypto(widget.crypto.id, interval),
@@ -101,10 +51,6 @@ class _LineChartDesktopScreenState extends State<LineChartDesktopScreen> {
                   child: Column(
                     children: [
                       _showChart(snapshot.data!),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: const Text("Technical Chart"),
-                      ),
                       _detailsCrypto(),
                     ],
                   ),
@@ -130,7 +76,7 @@ class _LineChartDesktopScreenState extends State<LineChartDesktopScreen> {
         children: [
           AspectRatio(
             aspectRatio: sizeScreen.height > 600
-                ? 3
+                ? sizeScreen.width < 1000 ? 1.85/1 : 3
                 : sizeScreen.height > 460
                     ? 4
                     : 6,
@@ -181,6 +127,62 @@ class _LineChartDesktopScreenState extends State<LineChartDesktopScreen> {
             style: style.copyWith(fontSize: 15),
             textAlign: TextAlign.left,
           ),
+          ListTile(
+            title: Text(
+              'Market Cap',
+              style: style.copyWith(
+                fontSize: 15,
+              ),
+            ),
+            trailing: Text(
+              widget.crypto.marketCapUsd.toStringAsFixed(2),
+              style: style.copyWith(
+                fontSize: 15,
+              ),
+            ),
+          ),
+          ListTile(
+            title: Text(
+              'Volume (24Hr)',
+              style: style.copyWith(
+                fontSize: 15,
+              ),
+            ),
+            trailing: Text(
+              widget.crypto.volumeUsd24Hr.toStringAsFixed(2),
+              style: style.copyWith(
+                fontSize: 15,
+              ),
+            ),
+          ),
+          ListTile(
+            title: Text(
+              'Supply',
+              style: style.copyWith(
+                fontSize: 15,
+              ),
+            ),
+            trailing: Text(
+              widget.crypto.supply.toStringAsFixed(2),
+              style: style.copyWith(
+                fontSize: 15,
+              ),
+            ),
+          ),
+          ListTile(
+            title: Text(
+              'VWAP (24Hr)',
+              style: style.copyWith(
+                fontSize: 15,
+              ),
+            ),
+            trailing: Text(
+              widget.crypto.vwap24Hr.toStringAsFixed(2),
+              style: style.copyWith(
+                fontSize: 15,
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -200,7 +202,7 @@ class _LineChartDesktopScreenState extends State<LineChartDesktopScreen> {
               final flSpot = barSpot;
               TextAlign textAlign = TextAlign.center;
               return LineTooltipItem(
-                'Price : \$${(flSpot.y)} \n Date : ${_list[flSpot.spotIndex].date}',
+                'Price : \$${(flSpot.y.toStringAsFixed(2))} \n Date : ${_list[flSpot.spotIndex].date}',
                 const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,

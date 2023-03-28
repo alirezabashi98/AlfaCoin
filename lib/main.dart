@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'constants/theme_config.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await initServiceLocator();
   runApp(const MyApp());
 }
