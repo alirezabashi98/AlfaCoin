@@ -30,6 +30,7 @@ dependencies:
   # responsive
   auto_size_text: ^3.0.0
   animated_theme_switcher: ^2.0.8
+  
 
 dev_dependencies:
   flutter_test:
