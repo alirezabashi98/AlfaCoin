@@ -19,13 +19,29 @@ A program to display the status of digital currencies with flutter
   <img src="Screenshot from 2023-04-30 12-32-21.png" width="100%" /> 
 </p>
 
-This project is a starting point for a Flutter application.
+## Developers
+Please subscribe into our [Telegram channel](https://t.me/alirezabashi_98) and to conntact with the developer click this [link address.](https://t.me/alirezabashi98)
 
-A few resources to get you started if this is your first Flutter project:
+for flutter developers:
+### Getting Started
+```shel
+https://github.com/alirezabashi98/AlfaCoin.git
+cd alfa_coin
+flutter pub get
+flutter create . --platforms=android
+flutter run 
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+For the rest of the operating systems, you can also use the following command, for example, for Linux as below, if there are several, put a comma between them as below
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```shel
+flutter create . --platforms=linux,android
+```
+
+this repo will be updated :blue_heart: .
+
+
+## Links
+
+* [Youtube channel](https://www.youtube.com/@alirezabashi98)
+* [Instagram](https://instagram.com/alirezabashi98)
