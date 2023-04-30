@@ -12,7 +12,7 @@ A program to display the status of digital currencies with flutter
   <img src="photo_2023-04-30_11-53-45.jpg" width="250px"  alt="alfa coin screenshot no.3" />
 </p>
 
-### linux applicationv ( desktop[linux,mac,windows] & web) 
+### linux applicationv ( desktop[linux,mac,windows]) 
 
 <p float="left">
   <img src="Screenshot from 2023-04-30 12-32-13.png" width="100%" />
