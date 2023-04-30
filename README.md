@@ -1,8 +1,16 @@
 # alfa_coin
 
-A new Flutter project.
+A program to display the status of digital currencies with flutter
 
-## Getting Started
+## screenshots
+
+### android
+
+<p float="left">
+  <img src="photo_2023-04-30_11-53-48.jpg" width="250px"  alt="chat application screenshot no.1" />
+  <img src="photo_2023-04-30_11-53-51.jpg" width="250px"  alt="chat application screenshot no.2" /> 
+  <img src="photo_2023-04-30_11-53-45.jpg" width="250px"  alt="chat application screenshot no.3" />
+</p>
 
 This project is a starting point for a Flutter application.
 
