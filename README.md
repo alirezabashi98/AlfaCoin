@@ -1,6 +1,12 @@
 # alfa_coin
 
 A program to display the status of digital currencies with flutter
+* Responsive
+* Provider state managemen
+* Web socket & Rest api
+* chart
+* multi-platform development<br><br>
+And ...
 
 ## screenshots
 
